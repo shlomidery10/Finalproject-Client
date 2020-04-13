@@ -1,0 +1,9 @@
+<h1>sadasdasdasdsaasdsa</h1>
+<agm-map [latitude]="latitude" [longitude]="longitude">
+
+<div *ngFor="let item of locations.Places[0]">
+  <agm-marker [latitude]="item.lat" [longitude]="item.lng"  ></agm-marker>
+
+</div>
+</agm-map>
+

@@ -1,0 +1,94 @@
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8" style="margin: auto;">
+              <div class="card">
+                  <div class="card-header card-header-danger" style="background: linear-gradient(60deg, #19a3c3d1, #2946be);">
+                      <h4 class="card-title">Planner</h4>
+                      <p class="card-category">Complete your Travel</p>
+                  </div>
+                  <div class="card-body">
+                      <!-- <form> -->
+                        <div class="row">
+                          <div class="col-md-12">
+                            <label>Destination</label>
+                               <!-- <app-auto-complete></app-auto-complete> -->
+                               <div class="ng-autocomplete" style="width: auto;margin-bottom: 30px;
+                               ">
+                                 <ng-autocomplete 
+                                   [data]="data"
+                                   [searchKeyword]="keyword"
+                                   (selected)='selectEvent($event)'
+                                   (inputChanged)='onChangeSearch($event)'
+                                   (inputFocused)='onFocused($event)'
+                                   [itemTemplate]="itemTemplate"
+                                   [notFoundTemplate]="notFoundTemplate">                                 
+                                 </ng-autocomplete>
+                                  
+                                 <ng-template #itemTemplate let-item>
+                                 <a [innerHTML]="item"></a>
+                                 </ng-template>
+                                  
+                                 <ng-template #notFoundTemplate let-notFound>
+                                 <div [innerHTML]="notFound"></div>
+                                 </ng-template>
+                                 </div>
+                      
+                          </div>
+                          
+                      </div>
+                          <div class="row">
+                              <div class="col">
+                                <label>From</label>
+                                <p></p>
+
+                                <ngb-datepicker #dp [(ngModel)]="from" (navigate)="date = $event.next"></ngb-datepicker>
+                                
+                                <hr/>
+                                
+                                <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectTodayfrom()">Select Today</button>
+                                <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
+                                <!-- <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button> -->
+                                
+                                <hr/>
+                                
+                                <!-- <pre>Month: {{ date.month }}.{{ date.year }}</pre>
+                                <pre>Model: {{ model | json }}</pre> -->
+                                
+                              </div>
+
+                              <div class="col">
+                                <label>To</label>
+                                <p></p>
+
+                                <ngb-datepicker #dp [(ngModel)]="To" (navigate)="date = $event.next"></ngb-datepicker>
+                                
+                                <hr/>
+                                
+                                <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectTodayTo()">Select Today</button>
+                                <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
+                                <!-- <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button> -->
+                                
+                                <hr/>
+                                
+                                <!-- <pre>Month: {{ date.month }}.{{ date.year }}</pre>
+                                <pre>Model: {{ model | json }}</pre> -->
+                                
+                              </div>
+                          </div>
+                          <div class="row">
+
+                            <mat-form-field style="width: -webkit-fill-available;">
+                              <mat-label>Activities Preferences</mat-label>
+                              <mat-select [formControl]="activitiesForm" multiple>
+                                <mat-option *ngFor="let activitie of activities" [value]="activitie">{{activitie}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                        
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="planTrip()" style="background: linear-gradient(60deg, #19a3c3d1, #2946be);">Plan Your Trip</button>
+                          <div class="clearfix"></div>
+                          
+                      <!-- </form> -->
+                  </div>
+              </div>

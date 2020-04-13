@@ -1,0 +1,68 @@
+
+.get-complete-plan
+{
+  
+        margin-bottom: 0;
+        width: 1000px;
+        margin: 0 auto 40px;
+}
+
+.hero .hero-content .hero-title {
+    color: #fff;
+    text-align: center;
+}
+
+.get-complete-plan .complete-plan-title {
+    width: 100%;
+    text-align: center;
+    font-weight: 900;
+    line-height: 1.8;
+    font-size: 2.57em;
+    letter-spacing: -0.6px;
+    border-top: 1px solid #dedede;
+    padding-top: 26px;
+    margin: 0 0 -20px;
+}
+.get-complete-plan .col .title {
+    font-weight: 900;
+    margin: 0 0 8px;
+    font-size: 1.5em;
+    line-height: 1.5;
+    letter-spacing: 0;
+    color: #333;
+}
+.get-complete-plan .col:first-child {
+    margin-left: 0;
+}
+.get-complete-plan .col {
+    height: 304px;
+    float: left;
+    padding: 20px 0 54px;
+    text-align: center;
+    position: relative;
+}
+.normal .col-3 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    float: left;
+    width: 25%;
+}
+ul, ol, li {
+    padding: 0;
+    margin: 0;
+}
+.get-complete-plan .col .desc {
+    font-weight: 400;
+    color: #4a4a4a;
+    font-size: 1.14em;
+    line-height: 1.5;
+}
+.mat-button.btn.btn-primary, .mat-raised-button.btn.btn-primary, .mat-raised-button.btn:not([class*=mat-elevation-z]).btn-primary, .btn.btn-primary {
+    color: #fff;
+    background-color:#004cff;
+    border-color: #1bd5ff;
+    box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
+}
+
