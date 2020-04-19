@@ -16,7 +16,12 @@
 
 -->
 <!doctype html>
-<html>
+<html style="height:100%;
+    min-height:100%;
+    max-height:100%;
+    background-image: url('./assets/img/beach.jpg');
+background-size:cover">
+
 <head>
     <base href='/'>
     <meta charset="utf-8" />
@@ -37,13 +42,13 @@
     <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR-KEY-HERE"></script> -->
 
 </head>
+<body style="
+    background-image: url('./assets/img/beach.jpg');
+background-size: cover">
 
-<body >
-  <app-root >
-
-
-    <div class="loader">
-      <svg class="circular" viewBox="25 25 50 50">
+  <app-root>
+      <div class="loader">
+      <svg class="circular" viewBox="50 50 50 50">
           <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
       </svg>
     </div>

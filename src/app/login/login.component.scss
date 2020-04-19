@@ -1,16 +1,71 @@
 .myform{
-    margin-left: 30%;
-    background-color: azure;
-    margin-right: 30%;
-    margin-top: 10%;
-    width: 40%;
+    width: 320px;
+    height: 570px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-30%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 20px;
 }
-.login{
-//     background-image: url('../../assets/img/Sea-Wallpapers-41.jpg');
-    
-//    height: 100%;
+h2 {
 
-//    background-position: center;
-//    background-repeat: no-repeat;
-//    background-size: cover;
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 30px;
+    font-family: "Cambria Math";
+    color: rgba(255, 255, 255, 0.61);
+
+
+
+}
+
+btn btn-link{
+    color: #0c7cd5;
+}
+
+.form-control{
+    color: whitesmoke;
+
+}
+.btn-primary1{
+
+    background-color: rgba(12, 124, 213, 0.47);
+    box-shadow: #0b3251;
+    background-blend-mode: darken;
+    border-radius: 35px;
+
+}
+.form-group{
+
+    margin: 0;
+    padding: 0 0 20px;
+    color: #0c7cd5;
+    font-size: 14px;
+    font-family: "Calibri";
+
+}
+a{
+    color: #00acc1;
+    font-size: 12px;
+}
+h3{
+    font-size: 30px;
+    color: black;
+    font-family: Constantia;
+}
+h1 {
+
+    font-weight: 100;
+    font-family:"Calibri Light";
+    line-height: 24px;
+    font-size: 18px;
+    font-style: normal;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.76);
+    text-shadow: 1px 1px 2px #111111, 0 0 1em #111111, 0 0 0.2em #ddffe7;
 }

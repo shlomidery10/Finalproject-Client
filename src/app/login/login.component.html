@@ -1,10 +1,16 @@
-<div class="login">
-<h2>Login</h2>
+
+
+
 <div class="myform">
+    <h2>Login</h2>
+    <h1 class="ui-body u-width100pct u-maxWidth360 u-marginAuto u-marginBottom25 js-susiSubtitle">
+        Login to get personalized trip recommendations, follow people and trips you love, and interact with people.
+    </h1>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="username">Username</label>
         <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
             <div *ngIf="f.username.errors.required">Username is required</div>
         </div>
@@ -17,13 +23,16 @@
         </div>
     </div>
     <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">
+        <button [disabled]="loading" class="btn btn-primary1">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Login
         </button>
-
         <a routerLink="/register" class="btn btn-link">Register</a>
+
     </div>
+    <a href="#">Forget Password?</a>
 </form>
 </div>
-</div>
+
+
+
