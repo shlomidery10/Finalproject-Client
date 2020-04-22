@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { GetLocationService } from 'app/get-location.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -9,7 +10,7 @@ import { GetLocationService } from 'app/get-location.service';
 })
 export class ModalComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal,private getLocationService:GetLocationService) { }
+  constructor(public activeModal: NgbActiveModal,private getLocationService:GetLocationService,private router:Router) { }
   @Input() name;
   @Input() placesToShow;
 
@@ -26,7 +27,7 @@ export class ModalComponent implements OnInit {
   {
 
     this.getLocationService.saveTrip(this.placesToShow,this.values).subscribe(res=>{
-      
+      this.router.navigate(['app']);
     });
   }
 
