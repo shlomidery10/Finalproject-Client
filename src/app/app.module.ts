@@ -34,6 +34,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { ModalComponent } from './modal/modal.component';
+import { CommentsModalComponent } from './comments-modal/comments-modal.component';
 
 @NgModule({
   imports: [

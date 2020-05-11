@@ -36,45 +36,102 @@
                       </div>
                       
                   </div>
-                      <div class="row">
-                          <div class="col">
-                            <label>From</label>
-                            <p></p>
 
-                            <ngb-datepicker #dp [(ngModel)]="from" (navigate)="date = $event.next"></ngb-datepicker>
-                            
-                            <hr/>
-                            
-                            <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectTodayfrom()">Select Today</button>
-                            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
-                            <!-- <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button> -->
-                            
-                            <hr/>
-                            
-                            <!-- <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-                            <pre>Model: {{ model | json }}</pre> -->
-                            
-                          </div>
-
-                          <div class="col">
-                            <label>To</label>
-                            <p></p>
-
-                            <ngb-datepicker #dp [(ngModel)]="To" (navigate)="date = $event.next"></ngb-datepicker>
-                            
-                            <hr/>
-                            
-                            <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectTodayTo()">Select Today</button>
-                            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
-                            <!-- <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button> -->
-                            
-                            <hr/>
-                            
-                            <!-- <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-                            <pre>Model: {{ model | json }}</pre> -->
-                            
+                  <form class="form-inline" style=" margin-left: 15%; margin-right: auto;">
+                      <div class="form-group hidden">
+                          <div class="input-group">
+                              <input name="datepicker"
+                                     class="form-control"
+                                     ngbDatepicker
+                                     #datepicker="ngbDatepicker"
+                                     [minDate]="{year: year, month: month, day: day}"
+                                     [autoClose]="'outside'"
+                                     (dateSelect)="onDateSelection($event)"
+                                     [displayMonths]="2"
+                                     [dayTemplate]="t"
+                                     outsideDays="hidden"
+                                     [startDate]="fromDate!">
+                              <ng-template #t let-date let-focused="focused">
+        <span class="custom-day"
+              [class.focused]="focused"
+              [class.range]="isRange(date)"
+              [class.faded]="isHovered(date) || isInside(date)"
+              (mouseenter)="hoveredDate = date"
+              (mouseleave)="hoveredDate = null">
+          {{ date.day }}
+        </span>
+                              </ng-template>
                           </div>
                       </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <input #dpFromDate
+                                     class="form-control" placeholder="yyyy-mm-dd"
+                                     name="dpFromDate"
+                                     [value]="formatter.format(fromDate)"
+                                     (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                              <div class="input-group-append">
+                                  <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="form-group ml-2">
+                          <div class="input-group">
+                              <input #dpToDate
+                                     class="form-control" placeholder="yyyy-mm-dd"
+                                     name="dpToDate"
+                                     [value]="formatter.format(toDate)"
+                                     (input)="toDate = validateInput(toDate, dpToDate.value)">
+                              <div class="input-group-append">
+                                  <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+
+<!--                  <hr/>-->
+<!--                  <pre>From date model: {{ fromDate | json }}</pre>-->
+<!--                  <pre>To date model: {{ toDate | json }}</pre>-->
+
+<!--                      <div class="row" style=" margin-left: 15%; margin-right: auto;">-->
+<!--                          <div class="col">-->
+<!--                            <label>From</label>-->
+<!--                            <p></p>-->
+
+<!--                            <ngb-datepicker #dp [(ngModel)]="from" (navigate)="date = $event.next"></ngb-datepicker>-->
+
+<!--                            <hr/>-->
+
+<!--                            <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectTodayfrom()">Select Today</button>-->
+<!--                            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>-->
+<!--                            &lt;!&ndash; <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button> &ndash;&gt;-->
+
+<!--                            <hr/>-->
+
+<!--                            &lt;!&ndash; <pre>Month: {{ date.month }}.{{ date.year }}</pre>-->
+<!--                            <pre>Model: {{ model | json }}</pre> &ndash;&gt;-->
+
+<!--                          </div>-->
+
+<!--                          <div class="col">-->
+<!--                            <label>To</label>-->
+<!--                            <p></p>-->
+
+<!--                            <ngb-datepicker #dp [(ngModel)]="To" (navigate)="date = $event.next"></ngb-datepicker>-->
+
+<!--                            <hr/>-->
+
+<!--                            <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectTodayTo()">Select Today</button>-->
+<!--                            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>-->
+<!--                            &lt;!&ndash; <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button> &ndash;&gt;-->
+
+<!--                            <hr/>-->
+
+<!--                            &lt;!&ndash; <pre>Month: {{ date.month }}.{{ date.year }}</pre>-->
+<!--                            <pre>Model: {{ model | json }}</pre> &ndash;&gt;-->
+
+<!--                          </div>-->
+<!--                      </div>-->
                       <div class="row">
 
                         <mat-form-field style="width: -webkit-fill-available;">

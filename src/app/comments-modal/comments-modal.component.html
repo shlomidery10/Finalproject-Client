@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h4 class="modal-title">trip comments</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <!-- <input type="email" (keyup)="onKey($event)" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></div> -->
+
+  <div class="card" style="width: 18rem;">
+    <ul *ngFor="let comment of commentsList" class="list-group list-group-flush">
+      <li class="list-group-item"><h5>author_name:</h5>{{comment.author_name}}  <h5>relative_time_description:</h5>{{comment.relative_time_description}} <h5>comment:</h5>{{comment.text}}
+      </li>
+
+    </ul>
+  </div>
+</div>
+<div class="modal-footer">
+  <!-- <button type="button" class="btn btn-outline-dark"(click)="saveTrip()"  (click)="activeModal.close('Close click')" >Save</button> -->
+</div>

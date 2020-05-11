@@ -1,4 +1,4 @@
-<h1>sadasdasdasdsaasdsa</h1>
+<!-- <h1>sadasdasdasdsaasdsa</h1>
 <agm-map [latitude]="latitude" [longitude]="longitude">
 
 <div *ngFor="let item of locations.Places[0]">
@@ -6,4 +6,20 @@
 
 </div>
 </agm-map>
+ -->
+<br>
+<br>
+<br>
 
+<div *ngIf=" locations">
+ <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Choose trip 
+  </button>
+  <div *ngFor="let travel of places" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">{{travel[0].name}}</a>
+    <!-- <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a> -->
+  </div>
+</div>
+</div>

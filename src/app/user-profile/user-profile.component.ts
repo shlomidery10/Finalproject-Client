@@ -9,14 +9,21 @@ import { GetLocationService } from 'app/get-location.service';
 export class UserProfileComponent implements OnInit {
   latitude=32.0853;
   longitude=34.7818;
-  locations:Array<Array<any>>=null;
+  locations:Array<any>=null;
+  places:Array<any>;
   constructor(private getLocationService:GetLocationService) { }
 
   ngOnInit()
    {
-    this.getLocationService.getUserTrips().subscribe((res:Array<Array<any>>)=>{
+    this.getLocationService.getUserTrips().subscribe((res:Array<any>)=>{
+      console.log("res",res);
+      
     this.locations=res;
+    this.places=res['Places'];
+    console.log("places",this.places);
+    
     console.log(this.locations);
+    console.log(this.locations['Places']);
     
     });
   }

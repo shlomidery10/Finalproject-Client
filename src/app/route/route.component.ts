@@ -3,7 +3,7 @@ import { GetLocationService } from 'app/get-location.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from 'app/modal/modal.component';
-
+import { CommentsModalComponent } from 'app/comments-modal/comments-modal.component';
 @Component({
   selector: 'app-route',
   templateUrl: './route.component.html',
@@ -11,7 +11,9 @@ import { ModalComponent } from 'app/modal/modal.component';
 })
 export class RouteComponent implements OnInit {
   numOfDays:number=3;
+  comments:boolean=false;
   days:number;
+  commentsList:Array<any>;
   placeName:string='';
 places:Array<any>=[];
 placesToShow:Array<any>=[];
@@ -28,30 +30,13 @@ resturents:Array<any>=[];
     this.acticities=this.route.snapshot.paramMap.get('activities');
     this.days=+this.route.snapshot.paramMap.get('days');
 
-    
-    // for (let index = 0; index <  this.acticities.length-1; index++) {
-      
-      
-    // }
-    console.log(this.acticities);
-    
     let words:string=this.activatedRoute.snapshot.params.travelName
     let word=words.split(' ');
-
-    console.log(word);
     word.splice(1,2);
-    console.log(word);
-    // this.days = word[0];
     for (let index = 1; index  < word.length; index++) {
       this.placeName += word[index];
-      
     }
-    console.log(this.days);
-    console.log(this.placeName);
-    
- 
     this.acticitiesList=this.acticities.split(',');
-    console.log("Sss",this.acticitiesList);
    }
 
    placeDetails(placeId)
@@ -59,14 +44,19 @@ resturents:Array<any>=[];
      console.log("placeId",placeId);
      
 this.getLocationService.getPlaceDetails(placeId).subscribe(res=>{
+  this.comments=true;
+  this.commentsList=res['result']['reviews'];
+  console.log("commentsList",this.commentsList);
+  
   console.log(res['result']);
   console.log("res");
   // console.log( this.places.find(x=>x.place_id==placeId));
   
-  var foundIndex=this.places.findIndex(x=>x.place_id==placeId);
-  this.places[foundIndex].adr_address=res['result'].adr_address;
-  console.log(this.places);
-  
+  // var foundIndex=this.places.findIndex(x=>x.place_id==placeId);
+  // this.places[foundIndex].adr_address=res['result'].adr_address;
+  // console.log(this.places);
+  this.commentModal();
+
 // this.places.find(x=>x.place_id==placeId).adr_address=res['result']['adr_address'];
 
 // console.log("places after filter ",this.places);
@@ -94,11 +84,9 @@ this.places.push(res[k])
         // this.mapToShow.set(this.acticitiesList[index],[this.places]);
       });
     
-      console.log("this.places!!!!",this.places);
       
     }
-    console.log("places",this.places);
-    console.log("sds",this.resturents);
+
 
 
 
@@ -111,27 +99,9 @@ this.places.push(res[k])
 
 
         this.getLocationService.GetNearbyPlacesDetails(this.placeName,"restaurants").subscribe((res:Array<any>)=>{
-          console.log("res",res);
           
           this.resturents=res;
-          console.log("after",this.resturents);
-          console.log("aaaaaaaaaaa",this.places);
-          
-          
-
-console.log(this.placesToShow);
-
-
-      // this.placesToShow[j]=(this.places[i]);
-      // this.placesToShow[j+1]=(this.resturents[i]);
-      // this.placesToShow[j+2]=(this.places[k]);
-      // this.placesToShow[j+3]=(this.resturents[i+1]);
-      // this.placesToShow[j+4]=(this.places[30]);
-      // console.log("asssss",this.placesToShow);
-      console.log(this.days);
-      console.log(this.resturents);
-      console.log(this.places);
-        
+      
 for(let i=0,j=0;i<this.days;i++)
 {
 
@@ -167,8 +137,23 @@ j=j+3;
         
 
 }
+closeComments()
+{
+  this.comments=false;
+}
+deleteTrip(item){
+console.log(item);
+let index=this.placesToShow.indexOf(item);
+console.log(this.placesToShow.indexOf(item));
 
-deleteTrip(){
+this.getLocationService.GetNearbyPlacesDetails(this.placeName,item['types'][0]).subscribe((res:Array<any>)=>{
+console.log(res);
+var y = Math.floor((Math.random() * 15));
+console.log(y);
+
+this.placesToShow[index]=res[y];
+
+});
 
 }
   choosenDay()
@@ -212,6 +197,13 @@ deleteTrip(){
     const modalRef = this.modalService.open(ModalComponent);
     modalRef.componentInstance.name = 'World';
     modalRef.componentInstance.placesToShow = this.placesToShow;
+
+  }
+  commentModal()
+  {
+    const modalRef = this.modalService.open(CommentsModalComponent);
+    modalRef.componentInstance.commentsList = this.commentsList;
+
 
   }
 

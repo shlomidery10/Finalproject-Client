@@ -29,6 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from 'app/login/login.component';
 import { RegisterComponent } from 'app/register/register.component';
 import { ModalComponent } from 'app/modal/modal.component';
+import { CommentsModalComponent } from 'app/comments-modal/comments-modal.component';
 
 @NgModule({
   imports: [
@@ -59,9 +60,10 @@ import { ModalComponent } from 'app/modal/modal.component';
     AutoCompleteComponent,
     TravelFormComponent,   
     UserProfileComponent,
-    ModalComponent
+    ModalComponent,
+    CommentsModalComponent
   ],
-  bootstrap: [TravelFormComponent,ModalComponent]
+  bootstrap: [TravelFormComponent,ModalComponent,CommentsModalComponent]
 
 })
 
