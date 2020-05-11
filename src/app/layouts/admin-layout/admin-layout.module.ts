@@ -29,7 +29,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from 'app/login/login.component';
 import { RegisterComponent } from 'app/register/register.component';
 import { ModalComponent } from 'app/modal/modal.component';
+<<<<<<< HEAD
 import { CommentsModalComponent } from 'app/comments-modal/comments-modal.component';
+=======
+import {AboutUsComponent} from '../../about-us/about-us.component';
+>>>>>>> a0500030e3c9c0a2dd4a2333758782cd68d9bfe4
 
 @NgModule({
   imports: [
@@ -61,7 +65,12 @@ import { CommentsModalComponent } from 'app/comments-modal/comments-modal.compon
     TravelFormComponent,   
     UserProfileComponent,
     ModalComponent,
+<<<<<<< HEAD
     CommentsModalComponent
+=======
+      AboutUsComponent
+
+>>>>>>> a0500030e3c9c0a2dd4a2333758782cd68d9bfe4
   ],
   bootstrap: [TravelFormComponent,ModalComponent,CommentsModalComponent]
 
