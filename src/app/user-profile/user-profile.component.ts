@@ -11,6 +11,7 @@ export class UserProfileComponent implements OnInit {
   longitude=34.7818;
   locations:Array<any>=null;
   places:Array<any>;
+  displayMap:boolean=false;
   constructor(private getLocationService:GetLocationService) { }
 
   ngOnInit()
@@ -18,14 +19,18 @@ export class UserProfileComponent implements OnInit {
     this.getLocationService.getUserTrips().subscribe((res:Array<any>)=>{
       console.log("res",res);
       
-    this.locations=res;
     this.places=res['Places'];
-    console.log("places",this.places);
-    
-    console.log(this.locations);
-    console.log(this.locations['Places']);
+
     
     });
+  }
+  travelMap(travel:any)
+  {
+    this.displayMap=true;
+    console.log(travel);
+    this.locations=travel[0].arr;
+    console.log(this.locations);
+    
   }
 
 }
