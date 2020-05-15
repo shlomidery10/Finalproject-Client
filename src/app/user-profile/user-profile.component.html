@@ -4,6 +4,9 @@
 <br>
 
 <div *ngIf=" places">
+
+<h1> trip to {{travelName}}</h1>
+
  <div  class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   Choose trip 
@@ -17,14 +20,44 @@
 </div>
 </div>
 
-<div *ngIf="displayMap">
+<div *ngIf="displayMap; else lastMapDisplay">
 <agm-map [latitude]="latitude" [longitude]="longitude">
-
-<div *ngFor="let item of locations">
-  <agm-marker [latitude]="item.lat" [longitude]="item.lng"  ></agm-marker>
-
+<div *ngFor="let item of locations;let i =index">
+  <agm-marker [latitude]="item.lat" [longitude]="item.lng" [iconUrl]="'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='+i+'|FE6256|000000'"  > </agm-marker>
+</div>
+<div *ngFor="let item of locationToDisplay;let i = index">
+  <div *ngIf="locationToDisplay.length-1!=i">
+    <agm-direction [origin]="locationToDisplay[i]" [destination]="locationToDisplay[i+1]" [renderOptions]="renderOptions"   ></agm-direction>
+  </div>
 </div>
 </agm-map>
+<!-- Distance:{{this.calculateDistance(locationToDisplay[i],locationToDisplay[i+1])}} -->
+</div>
+
+<ng-template #lastMapDisplay>
+  <agm-map [latitude]="latitude" [longitude]="longitude">
+    <div *ngFor="let item of locations;let i =index">
+      <agm-marker [latitude]="item.lat" [longitude]="item.lng" [iconUrl]="'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='+i+'|FE6256|000000'"  > </agm-marker>
+    </div>
+    <div *ngFor="let item of locationToDisplay;let i = index">
+      <div *ngIf="locationToDisplay.length-1!=i">
+        <agm-direction [origin]="locationToDisplay[i]" [destination]="locationToDisplay[i+1]" [renderOptions]="renderOptions"   ></agm-direction>
+      </div>
+    </div>
+    </agm-map>
+
+
+
+
+
+
+</ng-template>
+
+
+<div *ngFor="let item of distanceArray;let i =index">
+<h5>Distance between Point {{i}} to Point {{i+1}} is {{item}}KM</h5>
+
 
 </div>
 
+<button (click)=recommendedTrip()> Recoomend this trip</button>

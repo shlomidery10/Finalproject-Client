@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from 'app/modal/modal.component';
 import { CommentsModalComponent } from 'app/comments-modal/comments-modal.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-route',
   templateUrl: './route.component.html',
@@ -24,7 +25,7 @@ map:Map<string,Array<any>>=new Map();
 mapToShow:Map<string,Array<any>>=new Map();
 chosenDay:number=0;
 resturents:Array<any>=[];
-  constructor(private getLocationService:GetLocationService,private activatedRoute: ActivatedRoute,private route:ActivatedRoute,private modalService: NgbModal) 
+  constructor(private getLocationService:GetLocationService,private spinner: NgxSpinnerService,private activatedRoute: ActivatedRoute,private route:ActivatedRoute,private modalService: NgbModal) 
   {
 
     this.acticities=this.route.snapshot.paramMap.get('activities');
@@ -67,6 +68,19 @@ this.getLocationService.getPlaceDetails(placeId).subscribe(res=>{
    }
 
   ngOnInit() {
+
+console.log("start spinner");
+
+    this.spinner.show();
+
+    setTimeout(() => {
+      
+      /** spinner ends after 5 seconds */
+      console.log("end spinner");
+
+      this.spinner.hide();
+    }, 5000);
+
   
 
     for (let index = 0; index < this.acticitiesList.length; index++) {

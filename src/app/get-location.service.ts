@@ -27,6 +27,19 @@ getAutoComplete(str:String)
   return this.http.get(this.baseUrl+`GetAutoComplete?autoComplete=${str}`)
 }
 
+getRecomendedTrip()
+{
+  return this.http.get(this.baseUrl+'recommendedTrip');
+}
+
+saveRecomendedTrip(trip:any,tripName:string)
+{
+  let item = { "trip":trip,"tripName":tripName};
+  console.log(item);
+  
+  return this.http.post(this.baseUrl+'saveRecomendedTrip',item);
+}
+
 
 GetNearbyPlacesDetails(str:string,activities)
 {

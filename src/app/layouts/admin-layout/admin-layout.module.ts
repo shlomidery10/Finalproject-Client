@@ -31,6 +31,8 @@ import { RegisterComponent } from 'app/register/register.component';
 import { ModalComponent } from 'app/modal/modal.component';
 import { CommentsModalComponent } from 'app/comments-modal/comments-modal.component';
 import {AboutUsComponent} from '../../about-us/about-us.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { AgmDirectionModule } from 'agm-direction';
 
 @NgModule({
   imports: [
@@ -43,11 +45,15 @@ import {AboutUsComponent} from '../../about-us/about-us.component';
     MatRippleModule,
     MatFormFieldModule,
     MatInputModule,
+    NgxSpinnerModule,
     MatSelectModule,
+    AgmDirectionModule,
     MatTooltipModule,AutocompleteLibModule,
     AgmCoreModule.forRoot({
       apiKey:'AIzaSyCW4b9s7kSCjsGCwOcQ3pza0AvMXgsf-V0'
     }),
+    
+
   ],
   declarations: [
     DashboardComponent ,
@@ -63,9 +69,11 @@ import {AboutUsComponent} from '../../about-us/about-us.component';
     UserProfileComponent,
     ModalComponent,
     CommentsModalComponent,
-      AboutUsComponent
+      AboutUsComponent,
+
 
   ],
+  exports:[NgxSpinnerModule],
   bootstrap: [TravelFormComponent,ModalComponent,CommentsModalComponent]
 
 })

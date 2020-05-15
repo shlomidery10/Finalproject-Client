@@ -1,6 +1,7 @@
 
-
 <!-- <app-navbar></app-navbar> -->
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+
  <div class="containersaas" style="background-image: url('../../assets/img/egzon-bytyqi-310185_ photo_revised.jpg');background-size: contain;">
 
  <div class="row">
@@ -23,7 +24,7 @@
         <div class="row no-gutters">
           <div class="col-md-4">
             <div *ngIf="item.photos; else defultImage">
-            <img  class="card-img-top" style="width: 400px;height: 300px;" [src]=this.photoUrl+item.photos[0].photo_reference >
+            <img  class="card-img-top" style="width: 400px;height: 300px;" [src]=this.photoUrl+item.photos[0].photo_reference>
           </div>
 
           <ng-template #defultImage>

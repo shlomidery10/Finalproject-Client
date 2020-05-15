@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetLocationService } from 'app/get-location.service';
 
 @Component({
   selector: 'app-table-list',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private getLocationService:GetLocationService) { }
 
   ngOnInit() {
+    this.getLocationService.getRecomendedTrip().subscribe(res=>{
+      console.log(res);
+      
+    })
+
   }
 
 }

@@ -12,25 +12,113 @@ export class UserProfileComponent implements OnInit {
   locations:Array<any>=null;
   places:Array<any>;
   displayMap:boolean=false;
-  constructor(private getLocationService:GetLocationService) { }
-
+  origin:any;
+  destination:any;
+  icon:string;
+  distanceArray:Array<any>;
+  locationToDisplay:Array<any>;
+  travelName:string;
+  constructor(private getLocationService:GetLocationService) { 
+    this.locationToDisplay=new Array<any>();
+    this.icon="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|FE6256|000000"
+    this.distanceArray=new Array<any>();
+  }
+  public renderOptions = {
+    suppressMarkers: true,
+}
+public markerOptions = {
+      icon: 'https://www.shareicon.net/data/32x32/2016/04/28/756617_face_512x512.png',
+  // destination: {
+  //     icon: 'https://www.shareicon.net/data/32x32/2016/04/28/756626_face_512x512.png',
+  //     label: 'MARKER LABEL',
+  //     opacity: 0.8,
+  // },
+}
   ngOnInit()
    {
+
+//     this.origin = { 
+//       lat: 32.0853, 
+//       lng: 34.7818
+//   };
+//   this.destination = { 
+//     lat: 32.1782, 
+//     lng: 34.9076 
+// };
+
     this.getLocationService.getUserTrips().subscribe((res:Array<any>)=>{
       console.log("res",res);
-      
     this.places=res['Places'];
-
-    
+      let length=this.places.length-1;
+      
+    this.places[length][0].arr.forEach(location => {
+      this.locationToDisplay.push({lat:parseFloat(location.lat),lng:parseFloat(location.lng)});
+        
     });
+    this.locations=this.places[length][0].arr;
+    this.travelName=this.places[length][0].name;
+    this.latitude=this.places[length][0].arr[0].lat;
+    this.longitude=this.places[length][0].arr[0].lng;
+        
+    for (let index = 0; index < this.locations.length-1; index++) {
+      this.distanceArray.push(this.calculateDistance(this.locations[index],this.locations[index+1]))
+      
+    }
+    });
+
+  }
+  recommendedTrip()
+  {
+    this.getLocationService.saveRecomendedTrip(this.locations,this.travelName).subscribe(res=>{
+      console.log(res);
+    })
   }
   travelMap(travel:any)
   {
     this.displayMap=true;
     console.log(travel);
     this.locations=travel[0].arr;
-    console.log(this.locations);
+    this.travelName=travel[0].name;
+    this.latitude=travel[0].arr[0].lat;
+    this.longitude=travel[0].arr[0].lng;
+
+    this.longitude=this.places[length][0].arr[0].lng;
+    console.log(this.locationToDisplay);
+    this.locationToDisplay=[];
+    console.log("???????",this.locationToDisplay);
+    
+    
+    
+    this.locations.forEach(location => {
+      this.locationToDisplay.push({lat:parseFloat(location.lat),lng:parseFloat(location.lng)});
+    });
+
+    console.log("check here",this.locationToDisplay);
+
+    console.log("check here",this.locations);
+    this.distanceArray=[];
+    
+    for (let index = 0; index < this.locations.length-1; index++) {
+      this.distanceArray.push(this.calculateDistance(this.locations[index],this.locations[index+1]))
+      
+    }
+console.log("distance",this.distanceArray);
+
     
   }
+
+  calculateDistance(point1, point2) {
+    const p1 = new google.maps.LatLng(
+    point1.lat,
+    point1.lng
+    );
+    const p2 = new google.maps.LatLng(
+    point2.lat,
+    point2.lng
+    );
+    return (
+    google.maps.geometry.spherical.computeDistanceBetween(p1, p2)/1000
+    ).toFixed(2);
+}
 
 }

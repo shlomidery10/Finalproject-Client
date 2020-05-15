@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -35,6 +35,7 @@ import { RegisterComponent } from './register/register.component';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { ModalComponent } from './modal/modal.component';
 import { CommentsModalComponent } from './comments-modal/comments-modal.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { CommentsModalComponent } from './comments-modal/comments-modal.componen
     MatDatepickerModule,        // <----- import(must)
     MatNativeDateModule,        // <----- import for date formating(optional)
     AdminLayoutModule,
+
     // AgmCoreModule.forRoot({
     //   apiKey:'AIzaSyCW4b9s7kSCjsGCwOcQ3pza0AvMXgsf-V0'
     // }),
@@ -63,6 +65,7 @@ import { CommentsModalComponent } from './comments-modal/comments-modal.componen
     LoginComponent,
     RegisterComponent,
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent],
   exports: [

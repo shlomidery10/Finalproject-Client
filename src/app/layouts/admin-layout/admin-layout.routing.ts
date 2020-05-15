@@ -57,8 +57,8 @@ export const AdminLayoutRoutes: Routes = [
         }]
     },
 
-    { path: '',      component: DashboardComponent },
     // { path: 'dashboard',      component: DashboardComponent },
+    { path: 'app',   component: DashboardComponent },
 
     { path: 'my-plans',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
@@ -68,4 +68,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
     {path: 'about-us',        component: AboutUsComponent},
+    { path: '',      component: DashboardComponent },
+
 ];

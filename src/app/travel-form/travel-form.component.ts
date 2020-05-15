@@ -6,6 +6,7 @@ import { RouterModule, Routes, Router, NavigationEnd } from '@angular/router';
 // @ts-ignore
 import moment = require('moment');
 import {formatDate} from '@angular/common';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-travel-form',
@@ -66,7 +67,7 @@ export class TravelFormComponent implements OnInit {
   // isDisabled = formatDate(new Date(), 'yyyy/MM/dd', 'en');
 
   // tslint:disable-next-line:max-line-length
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter , private getLocationService: GetLocationService, private route: Router) {
+  constructor(private calendar: NgbCalendar, private spinner: NgxSpinnerService,public formatter: NgbDateParserFormatter , private getLocationService: GetLocationService, private route: Router) {
 
     // this.fromDate = calendar.getToday();
    // this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
@@ -151,8 +152,13 @@ export class TravelFormComponent implements OnInit {
     console.log('previoues', this.getPreviousUrl());
 
       // tslint:disable-next-line:max-line-length
-    this.route.navigate(['/trip/', `${this.days} days in ${this.placeName}`, {activities: this.activitiesForm['_pendingValue'], days: this.days}])
-    }
+      console.log("this.spinner.show()");
+      
+      this.route.navigate(['/trip/', `${this.days} days in ${this.placeName}`, {activities: this.activitiesForm['_pendingValue'], days: this.days}])
+      console.log("start");
+      
+
+ }
   }
 
   onChangeSearch(val: string) {
