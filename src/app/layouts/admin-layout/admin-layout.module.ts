@@ -50,7 +50,9 @@ import { AgmDirectionModule } from 'agm-direction';
     AgmDirectionModule,
     MatTooltipModule,AutocompleteLibModule,
     AgmCoreModule.forRoot({
-      apiKey:'AIzaSyCW4b9s7kSCjsGCwOcQ3pza0AvMXgsf-V0'
+      apiKey:'AIzaSyCW4b9s7kSCjsGCwOcQ3pza0AvMXgsf-V0',
+      libraries: ['geometry']
+
     }),
     
 

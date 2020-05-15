@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GetLocationService } from 'app/get-location.service';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -28,27 +29,32 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor(private route:Router) { }
+  constructor(private route:Router,private getLocationService:GetLocationService) { }
+  navigateToPath(nav)
+  {
+console.log("nav",nav);
+this.route.navigate(['app/'+nav]);
 
+  }
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
-    console.log(this.menuItems );
-    console.log(this.route.url);
-    for(let i=0;i<this.menuItems.length;i++)
-    {
-      if(this.menuItems[i].path=="/dashboard")
-      {
-        this.menuItems[i].path=this.route.url;
+    // console.log("this.menuItems before",this.menuItems );
+    // console.log(this.route.url);
+    // for(let i=0;i<this.menuItems.length;i++)
+    // {
+    //   if(this.menuItems[i].path=="/dashboard")
+    //   {
+    //     this.menuItems[i].path=this.route.url;
 
-      }
-      else{
-        this.menuItems[i].path=this.route.url+this.menuItems[i].path;
+    //   }
+    //   else{
+    //     this.menuItems[i].path=this.route.url+this.menuItems[i].path;
 
-      }
-    }
-    // this.menuItems[1].path=this.route.url+"/my-plans"
-    console.log(this.menuItems );
-
+    //   }
+    // }
+    // // this.menuItems[1].path=this.route.url+"/my-plans"
+    // console.log("this.menuItems after",this.menuItems );
+    this.menuItems=ROUTES
   }
   isMobileMenu() {
       if ($(window).width() > 991) {

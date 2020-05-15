@@ -12,53 +12,10 @@ import { LoginComponent } from 'app/login/login.component';
 import {AboutUsComponent} from '../../about-us/about-us.component';
 
 export const AdminLayoutRoutes: Routes = [
-    // {
-    //   path: 'app',
-    //   children: [ {
-    //     path: 'dashboard',
-    //     component: DashboardComponent
-    // }]}
-    // ,
-     {
-    path: 'app',
-    children: [ {
-      path: 'userprofile',
-      component: UserProfileComponent
-    }]
-    }, {
-      path: 'app',
-      children: [ {
-        path: 'icons',
-        component: IconsComponent
-        }]
-    }, {
-        path: 'app',
-        children: [ {
-            path: 'notifications',
-            component: NotificationsComponent
-        }]
-    }, {
-        path: 'app',
-        children: [ {
-            path: 'maps',
-            component: MapsComponent
-        }]
-    }, {
-        path: 'app',
-        children: [ {
-            path: 'typography',
-            component: TypographyComponent
-        }]
-    }, {
-        path: 'app',
-        children: [ {
-            path: 'upgrade',
-            component: UpgradeComponent
-        }]
-    },
-
-    // { path: 'dashboard',      component: DashboardComponent },
-    { path: 'app',   component: DashboardComponent },
+    
+        {path: 'dashboard',component: DashboardComponent},
+        {path: 'my-plans',component: UserProfileComponent},
+        {path: 'dashboard',component: DashboardComponent},
 
     { path: 'my-plans',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
@@ -68,6 +25,51 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
     {path: 'about-us',        component: AboutUsComponent},
-    { path: '',      component: DashboardComponent },
+
+    { path: '**',      component: DashboardComponent },
 
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //  {path: 'app',children: [ {path: 'userprofile',component: UserProfileComponent}]},
+    //   {path: 'app',children: [ {path: 'icons',component: IconsComponent}]},
+    //    {path: 'app',children: [ {path: 'notifications',component: NotificationsComponent}]}, 
+    //    {path: 'app',children: [ {path: 'maps', component: MapsComponent
+    //     }]
+    // }, {
+    //     path: 'app',
+    //     children: [ {
+    //         path: 'typography',
+    //         component: TypographyComponent
+    //     }]
+    // }, {
+    //     path: 'app',
+    //     children: [ {
+    //         path: 'upgrade',
+    //         component: UpgradeComponent
+    //     }]
+    // },
+
+    // { path: 'dashboard',      component: DashboardComponent },

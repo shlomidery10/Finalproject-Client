@@ -134,3 +134,12 @@ body {
     text-align: center;
     padding-top: 15px;
 }
+.main-content
+{
+    margin-top: 0px;
+    background-image: url(../../assets/img/shutterstock-239392108.jpg) ;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

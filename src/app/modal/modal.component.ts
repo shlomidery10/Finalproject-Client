@@ -27,7 +27,12 @@ export class ModalComponent implements OnInit {
   {
 
     this.getLocationService.saveTrip(this.placesToShow,this.values).subscribe(res=>{
-      this.router.navigate(['app/my-plans']);
+      alert(location.origin+'/#/app/my-plans')
+      // this.router.navigateByUrl(location.origin+'/#/app/my-plans');
+      window.open(location.origin+'/#/app/my-plans');
+      this.router.navigate(['app'])
+      // window.location.href = location.origin+'app/my_plans'
+
     });
   }
 
