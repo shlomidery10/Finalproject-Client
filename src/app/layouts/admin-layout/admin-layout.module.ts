@@ -20,7 +20,8 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+  DateAdapter
 } from '@angular/material';
 import { AutoCompleteComponent } from 'app/auto-complete/auto-complete.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
@@ -33,6 +34,9 @@ import { CommentsModalComponent } from 'app/comments-modal/comments-modal.compon
 import {AboutUsComponent} from '../../about-us/about-us.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AgmDirectionModule } from 'agm-direction';
+import { CalendarComponent } from 'app/calendar/calendar.component';
+import { CalendarModule } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   imports: [
@@ -54,12 +58,18 @@ import { AgmDirectionModule } from 'agm-direction';
       libraries: ['geometry']
 
     }),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
     
 
   ],
   declarations: [
     DashboardComponent ,
     // UserProfileComponent,
+    CalendarComponent,
+
     TableListComponent,
     TypographyComponent,
     IconsComponent,

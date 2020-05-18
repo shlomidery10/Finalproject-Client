@@ -10,13 +10,14 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { LoginComponent } from 'app/login/login.component';
 import {AboutUsComponent} from '../../about-us/about-us.component';
+import { CalendarComponent } from 'app/calendar/calendar.component';
 
 export const AdminLayoutRoutes: Routes = [
     
         {path: 'dashboard',component: DashboardComponent},
         {path: 'my-plans',component: UserProfileComponent},
         {path: 'dashboard',component: DashboardComponent},
-
+    {path:'calendar',component:CalendarComponent},
     { path: 'my-plans',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },

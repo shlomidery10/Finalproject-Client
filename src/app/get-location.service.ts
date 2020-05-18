@@ -26,6 +26,10 @@ getAutoComplete(str:String)
 
   return this.http.get(this.baseUrl+`GetAutoComplete?autoComplete=${str}`)
 }
+getTripByName(tripName:string)
+{
+  return this.http.get(this.baseUrl+`getTripByName?tripName=${tripName}&userName=${localStorage.getItem("username")}`)
+}
 
 getRecomendedTrip()
 {

@@ -36,6 +36,9 @@ import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { ModalComponent } from './modal/modal.component';
 import { CommentsModalComponent } from './comments-modal/comments-modal.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   imports: [
@@ -43,7 +46,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-  
+ 
     HttpModule,
     ComponentsModule,
     RouterModule,
@@ -52,7 +55,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatDatepickerModule,
     MatDatepickerModule,        // <----- import(must)
     MatNativeDateModule,        // <----- import for date formating(optional)
-    AdminLayoutModule,
+    AdminLayoutModule, CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
 
     // AgmCoreModule.forRoot({
     //   apiKey:'AIzaSyCW4b9s7kSCjsGCwOcQ3pza0AvMXgsf-V0'

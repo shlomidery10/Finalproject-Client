@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetLocationService } from 'app/get-location.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,7 +19,8 @@ export class UserProfileComponent implements OnInit {
   distanceArray:Array<any>;
   locationToDisplay:Array<any>;
   travelName:string;
-  constructor(private getLocationService:GetLocationService) { 
+  travelId:string;
+  constructor(private getLocationService:GetLocationService,private route:Router) { 
     this.locationToDisplay=new Array<any>();
     this.icon="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|FE6256|000000"
     this.distanceArray=new Array<any>();
@@ -81,7 +83,8 @@ public markerOptions = {
     this.travelName=travel[0].name;
     this.latitude=travel[0].arr[0].lat;
     this.longitude=travel[0].arr[0].lng;
-
+    console.log(travel);
+    
     this.longitude=this.places[length][0].arr[0].lng;
     console.log(this.locationToDisplay);
     this.locationToDisplay=[];
@@ -108,17 +111,24 @@ console.log("distance",this.distanceArray);
   }
 
   calculateDistance(point1, point2) {
-    const p1 = new google.maps.LatLng(
-    point1.lat,
-    point1.lng
-    );
-    const p2 = new google.maps.LatLng(
-    point2.lat,
-    point2.lng
-    );
-    return (
-    google.maps.geometry.spherical.computeDistanceBetween(p1, p2)/1000
-    ).toFixed(2);
+    // const p1 = new google.maps.LatLng(
+    // point1.lat,
+    // point1.lng
+    // );
+    // const p2 = new google.maps.LatLng(
+    // point2.lat,
+    // point2.lng
+    // );
+    // return (
+    // google.maps.geometry.spherical.computeDistanceBetween(p1, p2)/1000
+    // ).toFixed(2);
+}
+
+
+routeToCalendar()
+{
+  this.route.navigate(['app','calendar',{tripName:this.travelName}],);
+  
 }
 
 }
