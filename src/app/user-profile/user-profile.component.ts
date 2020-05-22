@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  Days: string[] = ['12', '13', '14', '15', '16'];
   latitude=32.0853;
   longitude=34.7818;
   locations:Array<any>=null;
@@ -125,10 +126,11 @@ console.log("distance",this.distanceArray);
 }
 
 
-routeToCalendar()
-{
-  this.route.navigate(['app','calendar',{tripName:this.travelName}],);
-  
-}
+routeToCalendar() {
+  this.route.navigate(['app', 'calendar', {tripName: this.travelName}], );
 
+}
+routeToTimeLine() {
+  this.route.navigate(['app', 'Days', {tripName: this.travelName}], );
+}
 }

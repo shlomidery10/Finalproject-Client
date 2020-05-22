@@ -1,3 +1,80 @@
 agm-map{
     height: 400px;
+    width: 600px;
+    position: fixed;
+    top: 47%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-30%, -30%);
+    border-radius: 200px;
+}
+button.f1{
+    position: fixed;
+    top: 25%;
+    left: 60%;
+    /* bring your own prefixes */
+    transform: translate(-10%, -120%);
+    border-color: black;
+}
+mat-checkbox{
+    position: fixed;
+    top: 25%;
+    left: 80%;
+    /* bring your own prefixes */
+    transform: translate(-10%, -120%);
+}
+h1{
+    font-family: VollkornSemiboldItalic-ywjLV, serif;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-10%, -120%);
+}
+
+.myButton {
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    background-color:#ffffff;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    cursor:pointer;
+    color:#666666;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:normal;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff;
+
+    /* bring your own prefixes */
+    transform: translate(-10%, -50%);
+}
+.myButton:hover {
+    background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    background-color:#f6f6f6;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+
+.itinerary-left-timeline-pane .day-box .month {
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 32px;
+    width: 28px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #9b9b9b;
+}
+mat-selection-list
+{
+    width: 150px;
+}
+background{
+    background-image: url("../../sea-and-nature.jpg");
 }

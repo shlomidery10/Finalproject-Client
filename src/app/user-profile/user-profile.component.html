@@ -1,25 +1,58 @@
+<div class="background">
+<br>
+<br>
+<br>
 
-<br>
-<br>
-<br>
+
 
 <div *ngIf=" places">
 
-<h1> trip to {{travelName}}</h1>
+    <h1> trip to {{travelName}}</h1>
 
- <div  class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  Choose trip 
-  </button>
+    <div  class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Choose trip
+        </button>
 
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <div *ngFor="let x of places">
-        <button (click)="travelMap(x)">{{x[0].name}}</button>
-  </div>
-</div>
-</div>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div *ngFor="let x of places">
+                <button (click)="travelMap(x)">{{x[0].name}}</button>
+            </div>
+        </div>
+    </div>
 </div>
 
+<br>
+<div>
+    <button class="f1" mat-button [matMenuTriggerFor]="aboveMenu">our trip</button>
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+        <button href="/my-plans" mat-menu-item>Map</button>
+        <button mat-menu-item (click)=routeToCalendar()> Calender</button>
+        <button mat-menu-item (click)=routeToTimeLine()>TimeLine</button>
+
+    </mat-menu>
+
+    <!--<button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+
+    <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+    -->
+    <mat-checkbox>Show direction</mat-checkbox>
+</div>
 <div *ngIf="displayMap; else lastMapDisplay">
 <agm-map [latitude]="latitude" [longitude]="longitude">
 <div *ngFor="let item of locations;let i =index">
@@ -59,9 +92,21 @@
 
 
 </div>
+<div class="month">May</div>
+<mat-selection-list #days>
+    <mat-list-option *ngFor="let day of Days">
+        {{day}}
+    </mat-list-option>
+</mat-selection-list>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<button (click)=recommendedTrip()> Recoomend this trip</button>
+<button class="myButton" (click)=recommendedTrip()> Recommend this trip</button>
 
 
 <!-- <app-calendar></app-calendar> -->
-<button (click)=routeToCalendar()> Calender view</button>
+<!--<button  (click)=routeToCalendar()> Calender view</button>-->
+</div>
