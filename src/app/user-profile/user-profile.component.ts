@@ -8,24 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  Days: string[] = ['12', '13', '14', '15', '16'];
-  latitude=32.0853;
-  longitude=34.7818;
-  locations:Array<any>=null;
-  places:Array<any>;
-  displayMap:boolean=false;
-  origin:any;
-  destination:any;
-  icon:string;
-  distanceArray:Array<any>;
-  locationToDisplay:Array<any>;
-  travelName:string;
-  travelId:string;
-  constructor(private getLocationService:GetLocationService,private route:Router) { 
-    this.locationToDisplay=new Array<any>();
-    this.icon="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|FE6256|000000"
-    this.distanceArray=new Array<any>();
-  }
+  Days: string[] = ['17', '18', '19', '20', '21', '22', '23'];
+  latitude = 32.0853;
+  longitude = 34.7818;
+  locations: Array<any> = null;
+  places: Array<any>;
+  displayMap = false;
+  origin: any;
+  destination: any;
+  icon: string;
+  distanceArray: Array<any>;
+  locationToDisplay: Array<any>;
+  travelName: string;
+  travelId: string;
   public renderOptions = {
     suppressMarkers: true,
 }
@@ -37,78 +32,80 @@ public markerOptions = {
   //     opacity: 0.8,
   // },
 }
-  ngOnInit()
-   {
+  constructor(private getLocationService: GetLocationService, private route: Router) {
+    this.locationToDisplay = new Array<any>();
+    this.icon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|FE6256|000000'
+    this.distanceArray = new Array<any>();
+  }
+  ngOnInit() {
 
-//     this.origin = { 
-//       lat: 32.0853, 
+//     this.origin = {
+//       lat: 32.0853,
 //       lng: 34.7818
 //   };
-//   this.destination = { 
-//     lat: 32.1782, 
-//     lng: 34.9076 
+//   this.destination = {
+//     lat: 32.1782,
+//     lng: 34.9076
 // };
 
-    this.getLocationService.getUserTrips().subscribe((res:Array<any>)=>{
-      console.log("res",res);
-    this.places=res['Places'];
-      let length=this.places.length-1;
-      
+    this.getLocationService.getUserTrips().subscribe((res: Array<any>) => {
+      console.log('res', res);
+    this.places = res['Places'];
+      const length = this.places.length - 1;
+
     this.places[length][0].arr.forEach(location => {
-      this.locationToDisplay.push({lat:parseFloat(location.lat),lng:parseFloat(location.lng)});
-        
+      this.locationToDisplay.push({lat: parseFloat(location.lat), lng: parseFloat(location.lng)});
+
     });
-    this.locations=this.places[length][0].arr;
-    this.travelName=this.places[length][0].name;
-    this.latitude=this.places[length][0].arr[0].lat;
-    this.longitude=this.places[length][0].arr[0].lng;
-        
-    for (let index = 0; index < this.locations.length-1; index++) {
-      this.distanceArray.push(this.calculateDistance(this.locations[index],this.locations[index+1]))
-      
+    this.locations = this.places[length][0].arr;
+    this.travelName = this.places[length][0].name;
+    this.latitude = this.places[length][0].arr[0].lat;
+    this.longitude = this.places[length][0].arr[0].lng;
+
+    for (let index = 0; index < this.locations.length - 1; index++) {
+      this.distanceArray.push(this.calculateDistance(this.locations[index], this.locations[index + 1]))
+
     }
     });
 
   }
-  recommendedTrip()
-  {
-    this.getLocationService.saveRecomendedTrip(this.locations,this.travelName).subscribe(res=>{
+  recommendedTrip() {
+    this.getLocationService.saveRecomendedTrip(this.locations, this.travelName).subscribe(res => {
       console.log(res);
     })
   }
-  travelMap(travel:any)
-  {
-    this.displayMap=true;
+  travelMap(travel: any) {
+    this.displayMap = true;
     console.log(travel);
-    this.locations=travel[0].arr;
-    this.travelName=travel[0].name;
-    this.latitude=travel[0].arr[0].lat;
-    this.longitude=travel[0].arr[0].lng;
+    this.locations = travel[0].arr;
+    this.travelName = travel[0].name;
+    this.latitude = travel[0].arr[0].lat;
+    this.longitude = travel[0].arr[0].lng;
     console.log(travel);
-    
-    this.longitude=this.places[length][0].arr[0].lng;
+
+    this.longitude = this.places[length][0].arr[0].lng;
     console.log(this.locationToDisplay);
-    this.locationToDisplay=[];
-    console.log("???????",this.locationToDisplay);
-    
-    
-    
+    this.locationToDisplay = [];
+    console.log('???????', this.locationToDisplay);
+
+
+
     this.locations.forEach(location => {
-      this.locationToDisplay.push({lat:parseFloat(location.lat),lng:parseFloat(location.lng)});
+      this.locationToDisplay.push({lat: parseFloat(location.lat), lng: parseFloat(location.lng)});
     });
 
-    console.log("check here",this.locationToDisplay);
+    console.log('check here', this.locationToDisplay);
 
-    console.log("check here",this.locations);
-    this.distanceArray=[];
-    
-    for (let index = 0; index < this.locations.length-1; index++) {
-      this.distanceArray.push(this.calculateDistance(this.locations[index],this.locations[index+1]))
-      
+    console.log('check here', this.locations);
+    this.distanceArray = [];
+
+    for (let index = 0; index < this.locations.length - 1; index++) {
+      this.distanceArray.push(this.calculateDistance(this.locations[index], this.locations[index + 1]))
+
     }
-console.log("distance",this.distanceArray);
+console.log('distance', this.distanceArray);
 
-    
+
   }
 
   calculateDistance(point1, point2) {

@@ -1,15 +1,8 @@
-<div class="background">
-<br>
-<br>
-<br>
-
-
-
-<div *ngIf=" places">
-
+<div class="main-content">
     <h1> trip to {{travelName}}</h1>
-
-    <div  class="dropdown">
+    <br>
+    <div *ngIf=" places">
+        <div  class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose trip
         </button>
@@ -22,7 +15,7 @@
     </div>
 </div>
 
-<br>
+
 <div>
     <button class="f1" mat-button [matMenuTriggerFor]="aboveMenu">our trip</button>
     <mat-menu #aboveMenu="matMenu" yPosition="above">
@@ -92,7 +85,12 @@
 
 
 </div>
-<div class="month">May</div>
+    <br>
+    <br>
+    <br>
+
+<div class="month">  May</div>
+<br>
 <mat-selection-list #days>
     <mat-list-option *ngFor="let day of Days">
         {{day}}
@@ -109,4 +107,5 @@
 
 <!-- <app-calendar></app-calendar> -->
 <!--<button  (click)=routeToCalendar()> Calender view</button>-->
+
 </div>
