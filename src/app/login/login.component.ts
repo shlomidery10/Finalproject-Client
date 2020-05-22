@@ -28,6 +28,13 @@ export class LoginComponent implements OnInit {
 
   }
 
+  register()
+  {
+this.router.navigate(['register'])
+  }
+
+
+
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
         username: ['', Validators.required],

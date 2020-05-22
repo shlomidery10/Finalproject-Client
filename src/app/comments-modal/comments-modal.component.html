@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">trip comments</h4>
+  <h4 class="modal-title" style="color: #f89406; margin-left: 35%">Trip Comments</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -7,9 +7,15 @@
 <div class="modal-body">
   <!-- <input type="email" (keyup)="onKey($event)" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"></div> -->
 
-  <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 29rem; margin-top: 0px">
     <ul *ngFor="let comment of commentsList" class="list-group list-group-flush">
-      <li class="list-group-item"><h5>author_name:</h5>{{comment.author_name}}  <h5>relative_time_description:</h5>{{comment.relative_time_description}} <h5>comment:</h5>{{comment.text}}
+      <li class="list-group-item">
+        <h5 class="badge badge-warning" style="font-size: 15px">Author Name: <span class="badge badge-info" style="font-size: 15px">{{comment.author_name}}</span></h5>
+        <br>
+        <h5 class="badge badge-warning" style="font-size: 15px">Time Description: <span class="badge badge-info" style="font-size: 15px">{{comment.relative_time_description}}</span></h5>
+        <br>
+        <h5 style="color: #f89406">Comment:</h5>
+        <p style="color: #3a87ad; font-size: 15px">{{comment.text}}</p>
       </li>
 
     </ul>

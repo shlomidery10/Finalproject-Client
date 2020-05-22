@@ -1,48 +1,56 @@
-
 <!-- <app-navbar></app-navbar> -->
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
 
- <div class="containersaas" style="background-image: url('../../assets/img/egzon-bytyqi-310185_ photo_revised.jpg');background-size: contain;">
+ <div class="containersaas" style="background-color: #659DBD">
 
  <div class="row">
-  <button type="button" style="margin-left: 75%" class="btn btn-primary" (click)="saveTrip()">Save Trip</button>
+  <button class="myButton" type="button" style="margin-left: 90.5%; position: fixed; margin-top: 15%" (click)="saveTrip()">Save Trip</button>
  </div>
   <div class="container">
 <div class="row">
 
-    <div *ngFor="let item of this.placesToShow;let i=index" class="card mb-3" style="max-width: 1000px;">
-      <div *ngIf="i%5==0" ><h1>Day {{i/5+1}}</h1></div>
+    <div *ngFor="let item of this.placesToShow;let i=index" class="card mb-3 cardcustom text-bold" style="max-width: 1500px;">
+      <div style="text-align: center" *ngIf="i%5==0" ><h1>Day {{i/5+1}}</h1></div>
 
-        <div *ngIf="i%5==0">10:00-12:00</div>
-        <div *ngIf="i%5==1">12:00-14:00</div>
+        <div class="badge badge-pill badge-secondary" style="margin-left: 25px; margin-top: 170px; position: absolute;font-size: 15px" *ngIf="i%5==0">10:00-12:00</div>
+        <div class="badge badge-pill badge-secondary" style="margin-left: 25px; margin-top: 140px; position: absolute; font-size: 15px" *ngIf="i%5==1">12:00-14:00</div>
 
-        <div *ngIf="i%5==2">14:00-16:00</div>
-        <div *ngIf="i%5==3">16:00-18:00</div>
-        <div *ngIf="i%5==4">18:00-20:00</div>
+        <div class="badge badge-pill badge-secondary" style="margin-left: 25px; margin-top: 140px; position: absolute; font-size: 15px" *ngIf="i%5==2">14:00-16:00</div>
+        <div class="badge badge-pill badge-secondary" style="margin-left: 25px; margin-top: 140px; position: absolute; font-size: 15px" *ngIf="i%5==3">16:00-18:00</div>
+        <div class="badge badge-pill badge-secondary" style="margin-left: 25px; margin-top: 140px; position: absolute; font-size: 15px" *ngIf="i%5==4">18:00-20:00</div>
 
 
         <div class="row no-gutters">
-          <div class="col-md-4">
-            <div *ngIf="item.photos; else defultImage">
+          <div class="col-md-4" >
+            <div *ngIf="item.photos; else defultImage" style="margin-left: 140px; position: relative">
             <img  class="card-img-top" style="width: 400px;height: 300px;" [src]=this.photoUrl+item.photos[0].photo_reference>
           </div>
 
           <ng-template #defultImage>
-            <img  class="card-img-top" style="width: 400px;height: 300px;" src="../../assets/img/faces/no-image-available.jpg" >
+            <img  class="card-img-top" style="width: 400px;height: 300px; margin-left: 140px; position: relative" src="../../assets/img/faces/no-image-available.jpg" >
           </ng-template>
 
-                  </div>
+          </div>
           <div class="col-md-8">
-            <div class="card-body" style="margin-left: 200px;">
-              <h3 class="card-title">Name:{{item.name}}</h3>
+            <div class="card-body" style="margin-left: 170px;">
+              <h2 class="card-title">Name: {{item.name}}</h2>
               <p class="card-text">Address: {{item.formatted_address}}</p>
             
 
               <p class="card-text">Rating : {{item.rating}}</p>
-               <p class="card-text">Total Rating : {{item.user_ratings_total}}</p> 
+                <ng-template #t let-fill="fill">
+  <span class="star" [class.full]="fill === 100">
+    <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
+  </span>
+                </ng-template>
 
-               <button type="button" (click)="placeDetails(item.place_id)">More details</button>
-               <button type="button" (click)="deleteTrip(item)">change</button>
+                <ngb-rating [(rate)]="item.rating" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+
+
+               <p class="card-text">Total Votes: {{item.user_ratings_total}}</p>
+
+               <button class="btn btn-info" type="button" (click)="placeDetails(item.place_id)">More details</button>
+               <button class="btn btn-warning" type="button" (click)="deleteTrip(item)">change</button>
 
 
 
