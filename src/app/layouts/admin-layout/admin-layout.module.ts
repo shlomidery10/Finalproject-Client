@@ -37,34 +37,37 @@ import { AgmDirectionModule } from 'agm-direction';
 import { CalendarComponent } from 'app/calendar/calendar.component';
 import { CalendarModule } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NgbModule,
-    RouterModule.forChild(AdminLayoutRoutes),
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    NgxSpinnerModule,
-    MatSelectModule,
-    AgmDirectionModule,
-    MatTooltipModule,AutocompleteLibModule,
-    AgmCoreModule.forRoot({
-      apiKey:'AIzaSyCW4b9s7kSCjsGCwOcQ3pza0AvMXgsf-V0',
-      libraries: ['geometry']
+    imports: [
+        CommonModule,
+        NgbModule,
+        RouterModule.forChild(AdminLayoutRoutes),
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatRippleModule,
+        MatFormFieldModule,
+        MatInputModule,
+        NgxSpinnerModule,
+        MatSelectModule,
+        AgmDirectionModule,
+        MatTooltipModule, AutocompleteLibModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyCW4b9s7kSCjsGCwOcQ3pza0AvMXgsf-V0',
+            libraries: ['geometry']
 
-    }),
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory,
-    }),
-    
+        }),
+        CalendarModule.forRoot({
+            provide: DateAdapter,
+            useFactory: adapterFactory,
+        }), MatMenuModule, MatCheckboxModule, MatListModule,
 
-  ],
+
+    ],
   declarations: [
     DashboardComponent ,
     // UserProfileComponent,

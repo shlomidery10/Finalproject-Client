@@ -1,3 +1,121 @@
 agm-map{
-    height: 400px;
+    height: 370px;
+    width: 600px;
+    position: fixed;
+    top: 47%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-30%, -30%);
+    border-radius: 200px;
 }
+button.f1{
+    position: fixed;
+    top: 25%;
+    left:55%;
+    /* bring your own prefixes */
+    transform: translate(-10%, -120%);
+    border-color: black;
+    color: #ffffff;
+    background-color: rgba(39, 104, 115, 0.2);
+    border-radius: 20px;
+    font-family: "Calibri Light";
+}
+mat-checkbox{
+    position: fixed;
+    top: 25%;
+    left: 73%;
+    /* bring your own prefixes */
+    transform: translate(-10%, -120%);
+    color: #0a6ebd;
+    font-family: "Calibri Light";
+}
+h1{
+    font-family: VollkornSemiboldItalic-ywjLV, serif;
+    position: fixed;
+    top: 15%;
+    left: 40%;
+    /* bring your own prefixes */
+    transform: translate(-10%, -120%);
+}
+
+.myButton {
+    box-shadow:inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
+    background:linear-gradient(to bottom, rgba(255, 255, 255, 0.27) 5%, rgba(255, 255, 255, 0.14) 100%);
+    background-color: rgba(255, 255, 255, 0.23);
+    border-radius:6px;
+    border:1px solid rgba(220, 220, 220, 0.24);
+    display:inline-block;
+    cursor:pointer;
+    color: #000000;
+    font-family: "Calibri Light";
+    font-size:15px;
+    font-weight:normal;
+    padding:6px 24px;
+    text-decoration:none;
+
+    top: 60%;
+    left:85%;
+position: fixed;
+    border-radius: 20px;
+    /* bring your own prefixes */
+    transform: translate(-10%, -50%);
+}
+.myButton:hover {
+    background:linear-gradient(to bottom, rgba(0, 246, 255, 0.08) 5%, rgba(255, 255, 255, 0.15) 100%);
+    background-color: rgba(246, 246, 246, 0.15);
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+
+.itinerary-left-timeline-pane .day-box .month {
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 32px;
+    width: 28px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #9b9b9b;
+}
+mat-selection-list
+{
+    width: 150px;
+}
+
+div.dropdown-menu,div.dropdown{
+    position: fixed;
+    top: 16%;
+    left:35%;
+    border-radius: 20px;
+    font-family: "Calibri Light";
+    color: black;
+}
+button{
+    border-radius: 20px;
+}
+.main-content{
+    background:linear-gradient(to bottom, rgba(146, 255, 255, 0.36) 5%, rgba(97, 0, 255, 0.15) 100%);
+
+    margin-top: 0px;
+
+
+    background-position: center;
+    background-repeat:space;
+    background-size: cover;
+
+    overflow: hidden;
+
+
+    width: 200%;
+    height: 200%;
+}
+
+@media (max-width: 500px) {
+    .dropdown-menu{
+          height:200px;
+          overflow-y:auto;
+       }
+    }
