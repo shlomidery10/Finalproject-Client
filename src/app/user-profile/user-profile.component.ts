@@ -52,7 +52,8 @@ public markerOptions = {
       console.log('res', res);
     this.places = res['Places'];
       const length = this.places.length - 1;
-
+      console.log("shlom places!!!!!!!!,",this.places[0][0].name);
+      
     this.places[length][0].arr.forEach(location => {
       this.locationToDisplay.push({lat: parseFloat(location.lat), lng: parseFloat(location.lng)});
 
@@ -73,6 +74,11 @@ public markerOptions = {
     this.getLocationService.saveRecomendedTrip(this.locations, this.travelName).subscribe(res => {
       console.log(res);
     })
+  }
+  test(check)
+  {
+    console.log("test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",check);
+    
   }
   travelMap(travel: any) {
     this.displayMap = true;

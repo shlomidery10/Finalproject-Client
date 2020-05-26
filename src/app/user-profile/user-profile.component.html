@@ -1,23 +1,36 @@
 <div class="main-content">
-    <h1> trip to {{travelName}}</h1>
     <br>
     <div *ngIf=" places">
         <div  class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose trip
-        </button>
+        </button> -->
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <div *ngFor="let x of places">
-                <button (click)="travelMap(x)">{{x[0].name}}</button>
+                <button (click)="travelMap(x)" >{{x[0].name}}</button>
             </div>
         </div>
     </div>
+
+<!-- 
+ <mat-form-field>
+      <mat-label>Favorite food</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let place of places" [value]=place[0].name>
+          {{place[0].name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+
+
+
 </div>
 
 
 <div>
-    <button class="f1" mat-button [matMenuTriggerFor]="aboveMenu">our trip</button>
+    <button class="f1" mat-button [matMenuTriggerFor]="aboveMenu">our trip to {{travelName}}</button>
     <mat-menu #aboveMenu="matMenu" yPosition="above">
         <button href="/my-plans" mat-menu-item>Map</button>
         <button mat-menu-item (click)=routeToCalendar()> Calender</button>
@@ -80,14 +93,29 @@
 </ng-template>
 
 
-<div *ngFor="let item of distanceArray;let i =index">
+<!-- <div *ngFor="let item of distanceArray;let i =index">
 <h5>Distance between Point {{i}} to Point {{i+1}} is {{item}}KM</h5>
 
 
-</div>
+</div> -->
     <br>
     <br>
     <br>
+    <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Choose trip
+  </button> -->
+
+
+  <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+      <div *ngFor="let place of places" (click)="travelMap(place)">
+      <button ngbDropdownItem>{{place[0].name}}</button>
+
+    </div>
+    </div>
+  </div>
+
 
 <div class="month">  May</div>
 <br>
