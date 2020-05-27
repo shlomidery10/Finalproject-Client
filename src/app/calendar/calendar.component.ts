@@ -13,7 +13,7 @@ import {
   endOfMonth,
   isSameDay,
   isSameMonth,
-  addHours,
+  addHours, startOfToday,
 } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -25,6 +25,7 @@ import {
 } from 'angular-calendar';
 import { ActivatedRoute } from '@angular/router';
 import { GetLocationService } from 'app/get-location.service';
+import {element} from 'protractor';
 
 const colors: any = {
   red: {
@@ -54,9 +55,14 @@ export class CalendarComponent implements OnInit {
 
   view: CalendarView = CalendarView.Week;
 
+  i = 0;
+  j = 10;
+
   CalendarView = CalendarView;
 
   viewDate: Date = new Date();
+
+  today: Date = startOfToday();
 
   modalData: {
     action: string;
@@ -85,35 +91,9 @@ export class CalendarComponent implements OnInit {
 
   events: CalendarEvent[] = [
     {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
+      start: addHours(startOfDay(this.today), 0),
+      end: addHours(this.today, 0),
+      title: 'Start my trip',
       color: colors.yellow,
       actions: this.actions,
       resizable: {
@@ -121,46 +101,58 @@ export class CalendarComponent implements OnInit {
         afterEnd: true,
       },
       draggable: true,
-    },
+    }
   ];
 
   activeDayIsOpen: boolean = true;
 
   constructor(private modal: NgbModal,private activeRoute:ActivatedRoute,private getLocationService:GetLocationService) {
-    this.arrayOfLocation=new Array<any>();
-    this.arrayOfGooglePlaces=new Array<any>();
+    this.arrayOfLocation = new Array<any>();
+    this.arrayOfGooglePlaces = new Array<any>();
   }
   ngOnInit(): void {
 
-console.log("sdssd",this.activeRoute.snapshot.paramMap.get('tripName'));
-
-this.getLocationService.getUserTrips().subscribe((res:Array<any>)=>{
-let arrayOfPlaces:Array<any>=res['Places'];
-arrayOfPlaces.forEach(arr => {
-  if (arr[0].name==this.activeRoute.snapshot.paramMap.get('tripName')) {
-    this.arrayOfLocation=arr[0]['arr'];
-  }
-
-});
-
-console.log(this.arrayOfLocation);
-let arrayTocheck:Array<any>;
-arrayTocheck=new Array<any>();
-this.arrayOfLocation.forEach(element => {
-this.getLocationService.getPlaceDetails(element['place_id']).subscribe(res=>{
-arrayTocheck.push(res);
-})
-  
-});
-console.log(arrayTocheck);
-this.arrayOfGooglePlaces=arrayTocheck;
 
 
+    console.log("sdssd",this.activeRoute.snapshot.paramMap.get('tripName'));
+
+    this.getLocationService.getUserTrips().subscribe((res:Array<any>)=>{
+      let arrayOfPlaces:Array<any>=res['Places'];
+      arrayOfPlaces.forEach(arr => {
+        if (arr[0].name==this.activeRoute.snapshot.paramMap.get('tripName')) {
+          this.arrayOfLocation=arr[0]['arr'];
+        }
+
+      });
+
+      console.log(this.arrayOfLocation);
+      let arrayTocheck:Array<any>;
+      arrayTocheck=new Array<any>();
+      this.arrayOfLocation.forEach(element => {
+        this.getLocationService.getPlaceDetails(element['place_id']).subscribe(res => {
+          arrayTocheck.push(res);
+          console.log(res['result'].name);
+          this.addEvent(res['result'].name, this.j, this.j + 2, this.today);
+          this.i = this.i + 1;
+          this.j = this.j + 2;
+          if (this.i > 4) {
+            this.i = 0;
+            this.today = addDays(this.today, 1);
+            this.j = 10;
+            console.log(this.today);
+            this.refresh.next();
+          }
+        })
+      });
+
+      console.log(this.events);
+
+      this.arrayOfGooglePlaces = arrayTocheck;
 
 
 
 
-});
+    });
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -200,19 +192,20 @@ this.arrayOfGooglePlaces=arrayTocheck;
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
+  addEvent(title: string, start: any, end: any, day: any): void {
     this.events = [
       ...this.events,
       {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
+        start: addHours(startOfDay(day), start),
+        end: addHours(day, end),
+        title: title,
+        color: colors.blue,
+        actions: this.actions,
         resizable: {
           beforeStart: true,
           afterEnd: true,
         },
+        draggable: true,
       },
     ];
   }
