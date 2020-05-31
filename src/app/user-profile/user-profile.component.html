@@ -1,5 +1,6 @@
 <div class="main-content">
     <br>
+
     <div *ngIf=" places">
         <div  class="dropdown">
         <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,6 +60,9 @@
     -->
     <mat-checkbox>Show direction</mat-checkbox>
 </div>
+    <div class="container">
+        <div class="row my-5 d-flex flex-center">
+            <div class="col-md-6">
 <div *ngIf="displayMap; else lastMapDisplay">
 <agm-map [latitude]="latitude" [longitude]="longitude">
 <div *ngFor="let item of locations;let i =index">
@@ -72,7 +76,12 @@
 </agm-map>
 <!-- Distance:{{this.calculateDistance(locationToDisplay[i],locationToDisplay[i+1])}} -->
 </div>
-
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row my-5 d-flex flex-center">
+            <div class="col-md-6">
 <ng-template #lastMapDisplay>
   <agm-map [latitude]="latitude" [longitude]="longitude">
     <div *ngFor="let item of locations;let i =index">
@@ -90,8 +99,11 @@
 
 
 
-</ng-template>
 
+</ng-template>
+            </div>
+        </div>
+    </div>
 
 <!-- <div *ngFor="let item of distanceArray;let i =index">
 <h5>Distance between Point {{i}} to Point {{i+1}} is {{item}}KM</h5>
@@ -116,14 +128,14 @@
     </div>
   </div>
 
-
+<!--
 <div class="month">  May</div>
 <br>
 <mat-selection-list #days>
     <mat-list-option *ngFor="let day of Days">
         {{day}}
     </mat-list-option>
-</mat-selection-list>
+</mat-selection-list>-->
 <br>
 <br>
 <br>

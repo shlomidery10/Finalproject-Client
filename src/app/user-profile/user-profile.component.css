@@ -26,7 +26,8 @@ mat-checkbox{
     left: 73%;
     /* bring your own prefixes */
     transform: translate(-10%, -120%);
-    color: #0a6ebd;
+background-color: rgba(146, 255, 255, 0.39);
+border-radius: 30px;
     font-family: "Calibri Light";
 }
 h1{
@@ -98,7 +99,7 @@ button{
 }
 .main-content{
     background:linear-gradient(to bottom, rgba(146, 255, 255, 0.36) 5%, rgba(97, 0, 255, 0.15) 100%);
-
+   background-image: url("../../assets/img/defocused-image-of-lights-255379.jpg");
     margin-top: 0px;
 
 
