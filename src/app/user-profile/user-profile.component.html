@@ -1,18 +1,7 @@
 <div class="main-content">
     <br>
 
-    <div *ngIf=" places">
-        <div  class="dropdown">
-        <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Choose trip
-        </button> -->
 
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div *ngFor="let x of places">
-                <button (click)="travelMap(x)" >{{x[0].name}}</button>
-            </div>
-        </div>
-    </div>
 
 <!-- 
  <mat-form-field>
@@ -27,17 +16,7 @@
 
 
 
-</div>
 
-
-<div>
-    <button class="f1" mat-button [matMenuTriggerFor]="aboveMenu">our trip to {{travelName}}</button>
-    <mat-menu #aboveMenu="matMenu" yPosition="above">
-        <button href="/my-plans" mat-menu-item>Map</button>
-        <button mat-menu-item (click)=routeToCalendar()> Calender</button>
-        <button mat-menu-item (click)=routeToTimeLine()>TimeLine</button>
-
-    </mat-menu>
 
     <!--<button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
     <mat-menu #belowMenu="matMenu" yPosition="below">
@@ -59,8 +38,30 @@
     </mat-menu>
     -->
     <mat-checkbox>Show direction</mat-checkbox>
-</div>
-    <div class="container">
+<br>
+    <button class="myButton" (click)=recommendedTrip()> Recommend this trip</button>
+    <div *ngIf=" places">
+        <div  class="dropdown">
+            <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Choose trip
+            </button> -->
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div *ngFor="let x of places">
+                    <button (click)="travelMap(x)" >{{x[0].name}}</button>
+                </div>
+            </div>
+        </div></div>
+   <mat-card>
+       <div class="container">
+
+       <button class="f1" mat-button [matMenuTriggerFor]="aboveMenu">our trip to {{travelName}}</button>
+       <mat-menu #aboveMenu="matMenu" yPosition="above">
+           <button href="/my-plans" mat-menu-item>Map</button>
+           <button mat-menu-item (click)=routeToCalendar()> Calender</button>
+           <button mat-menu-item (click)=routeToTimeLine()>TimeLine</button>
+
+       </mat-menu>
         <div class="row my-5 d-flex flex-center">
             <div class="col-md-6">
 <div *ngIf="displayMap; else lastMapDisplay">
@@ -101,15 +102,30 @@
 
 
 </ng-template>
+
             </div>
         </div>
     </div>
+
+
+
+
+   </mat-card>
 
 <!-- <div *ngFor="let item of distanceArray;let i =index">
 <h5>Distance between Point {{i}} to Point {{i+1}} is {{item}}KM</h5>
 
 
 </div> -->
+    <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+            <div *ngFor="let place of places" (click)="travelMap(place)">
+                <button ngbDropdownItem>{{place[0].name}}</button>
+
+            </div>
+        </div>
+    </div>
     <br>
     <br>
     <br>
@@ -118,15 +134,7 @@
   </button> -->
 
 
-  <div ngbDropdown class="d-inline-block">
-    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
-      <div *ngFor="let place of places" (click)="travelMap(place)">
-      <button ngbDropdownItem>{{place[0].name}}</button>
 
-    </div>
-    </div>
-  </div>
 
 <!--
 <div class="month">  May</div>
@@ -142,10 +150,35 @@
 <br>
 <br>
 
-<button class="myButton" (click)=recommendedTrip()> Recommend this trip</button>
+
 
 
 <!-- <app-calendar></app-calendar> -->
 <!--<button  (click)=routeToCalendar()> Calender view</button>-->
 
+
+<!--<md-card>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Card with image</span>
+            <span class="md-subhead">Extra Large</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content layout="row" layout-align="space-between">
+        <div class="md-media-xl card-media"></div>
+
+        <md-card-actions layout="column">
+            <md-button class="md-icon-button" aria-label="Favorite">
+                <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Settings">
+                <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Share">
+                <md-icon md-svg-icon="img/icons/baseline-share-24px.svg"></md-icon>
+            </md-button>
+        </md-card-actions>
+    </md-card-content>
+</md-card>
+-->
 </div>

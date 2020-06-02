@@ -41,6 +41,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
     imports: [
@@ -65,7 +66,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
         CalendarModule.forRoot({
             provide: DateAdapter,
             useFactory: adapterFactory,
-        }), MatMenuModule, MatCheckboxModule, MatListModule, MatExpansionModule,
+        }), MatMenuModule, MatCheckboxModule, MatListModule, MatExpansionModule, MatCardModule,
 
 
     ],

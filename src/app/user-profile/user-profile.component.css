@@ -1,12 +1,10 @@
 agm-map{
-    height: 370px;
-    width: 600px;
-    position: fixed;
-    top: 47%;
-    left: 50%;
+
+height: 400px;
+    width:950px;
     /* bring your own prefixes */
-    transform: translate(-30%, -30%);
-    border-radius: 200px;
+
+
 }
 button.f1{
     position: fixed;
@@ -21,9 +19,9 @@ button.f1{
     font-family: "Calibri Light";
 }
 mat-checkbox{
-    position: fixed;
-    top: 25%;
-    left: 73%;
+position: fixed;
+    top: 10%;
+    left: 55%;
     /* bring your own prefixes */
     transform: translate(-10%, -120%);
 background-color: rgba(146, 255, 255, 0.39);
@@ -32,7 +30,7 @@ border-radius: 30px;
 }
 h1{
     font-family: VollkornSemiboldItalic-ywjLV, serif;
-    position: fixed;
+
     top: 15%;
     left: 40%;
     /* bring your own prefixes */
@@ -53,10 +51,10 @@ h1{
     font-weight:normal;
     padding:6px 24px;
     text-decoration:none;
-
-    top: 60%;
-    left:85%;
 position: fixed;
+    top: 20%;
+    left:85%;
+
     border-radius: 20px;
     /* bring your own prefixes */
     transform: translate(-10%, -50%);
@@ -87,7 +85,7 @@ mat-selection-list
 }
 
 div.dropdown-menu,div.dropdown{
-    position: fixed;
+position: fixed;
     top: 16%;
     left:35%;
     border-radius: 20px;
@@ -109,9 +107,9 @@ button{
 
     overflow: hidden;
 
-
-    width: 200%;
-    height: 200%;
+position: fixed;
+    width: 100%;
+    height: 110%;
 }
 
 @media (max-width: 500px) {
@@ -120,3 +118,10 @@ button{
           overflow-y:auto;
        }
     }
+
+.mat-card{
+background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50px;
+    height: 700px;
+    width: 1000px;
+}
