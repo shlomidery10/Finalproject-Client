@@ -39,7 +39,7 @@
     -->
     <mat-checkbox>Show direction</mat-checkbox>
 <br>
-    <button class="myButton" (click)=recommendedTrip()> Recommend this trip</button>
+
     <div *ngIf=" places">
         <div  class="dropdown">
             <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,6 +53,7 @@
             </div>
         </div></div>
    <mat-card>
+       <button class="myButton" (click)=recommendedTrip()> Recommend this trip</button>
        <div class="container">
 
        <button class="f1" mat-button [matMenuTriggerFor]="aboveMenu">our trip to {{travelName}}</button>
