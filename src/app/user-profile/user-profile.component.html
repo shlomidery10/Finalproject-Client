@@ -1,5 +1,9 @@
+
 <div class="main-content">
+    <button class="myButton" (click)=recommendedTrip() style="position: static;    background-color: chartreuse;"> Recommend this trip</button>
+
     <br>
+    <button class="f1" mat-button [matMenuTriggerFor]="aboveMenu">our trip to {{travelName}}</button>
 
 
 
@@ -37,10 +41,14 @@
         <button mat-menu-item>Item 2</button>
     </mat-menu>
     -->
-    <mat-checkbox>Show direction</mat-checkbox>
+    <!-- <mat-checkbox>Show direction</mat-checkbox> -->
 <br>
 
     <div *ngIf=" places">
+
+
+
+
         <div  class="dropdown">
             <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Choose trip
@@ -51,12 +59,14 @@
                     <button (click)="travelMap(x)" >{{x[0].name}}</button>
                 </div>
             </div>
-        </div></div>
-   <mat-card>
-       <button class="myButton" (click)=recommendedTrip()> Recommend this trip</button>
-       <div class="container">
+        </div>
+    </div>
 
-       <button class="f1" mat-button [matMenuTriggerFor]="aboveMenu">our trip to {{travelName}}</button>
+
+
+   <mat-card style="margin-left: 9%;">
+       <!-- <div class="container"> -->
+
        <mat-menu #aboveMenu="matMenu" yPosition="above">
            <button href="/my-plans" mat-menu-item>Map</button>
            <button mat-menu-item (click)=routeToCalendar()> Calender</button>
@@ -66,7 +76,8 @@
         <div class="row my-5 d-flex flex-center">
             <div class="col-md-6">
 <div *ngIf="displayMap; else lastMapDisplay">
-<agm-map [latitude]="latitude" [longitude]="longitude">
+    <div class="mm">
+<agm-map [latitude]="latitude" [longitude]="longitude"  style="    margin-top: 100px;" >
 <div *ngFor="let item of locations;let i =index">
   <agm-marker [latitude]="item.lat" [longitude]="item.lng" [iconUrl]="'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='+i+'|FE6256|000000'"  > </agm-marker>
 </div>
@@ -78,13 +89,15 @@
 </agm-map>
 <!-- Distance:{{this.calculateDistance(locationToDisplay[i],locationToDisplay[i+1])}} -->
 </div>
+</div>
             </div>
         </div>
-    </div>
-    <div class="container">
+    <!-- </div> -->
+    <!-- <div class="container"> -->
+        <div class="mapp">
         <div class="row my-5 d-flex flex-center">
             <div class="col-md-6">
-<ng-template #lastMapDisplay>
+<ng-template #lastMapDisplay style="position: fixed;">
   <agm-map [latitude]="latitude" [longitude]="longitude">
     <div *ngFor="let item of locations;let i =index">
       <agm-marker [latitude]="item.lat" [longitude]="item.lng" [iconUrl]="'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='+i+'|FE6256|000000'"  > </agm-marker>
@@ -107,6 +120,7 @@
             </div>
         </div>
     </div>
+    <!-- </div> -->
 
 
 
@@ -119,7 +133,9 @@
 
 </div> -->
     <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+        <button class="btn-outline-primary" style="margin-top: 10px;
+        width: 205px;
+        height: 41px;"  id="dropdownBasic1" ngbDropdownToggle>Switch Map</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
             <div *ngFor="let place of places" (click)="travelMap(place)">
                 <button ngbDropdownItem>{{place[0].name}}</button>

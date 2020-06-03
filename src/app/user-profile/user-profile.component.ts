@@ -73,7 +73,9 @@ public markerOptions = {
   recommendedTrip() {
     this.getLocationService.saveRecomendedTrip(this.locations, this.travelName).subscribe(res => {
       console.log(res);
-    })
+    });
+    alert("thanks");
+
   }
   test(check)
   {

@@ -8,14 +8,13 @@ height: 400px;
 }
 button.f1{
     position: fixed;
-    top: 25%;
     left:55%;
     /* bring your own prefixes */
     transform: translate(-10%, -120%);
     border-color: black;
     color: #ffffff;
-    background-color: rgba(39, 104, 115, 0.2);
-    border-radius: 20px;
+    background-color: black;
+        border-radius: 20px;
     font-family: "Calibri Light";
 }
 mat-checkbox{
@@ -86,7 +85,7 @@ mat-selection-list
 
 div.dropdown-menu,div.dropdown{
 position: fixed;
-    top: 16%;
+    top: 13%;
     left:35%;
     border-radius: 20px;
     font-family: "Calibri Light";
@@ -96,8 +95,9 @@ button{
     border-radius: 20px;
 }
 .main-content{
-    background:linear-gradient(to bottom, rgba(146, 255, 255, 0.36) 5%, rgba(97, 0, 255, 0.15) 100%);
-   background-image: url("../../assets/img/defocused-image-of-lights-255379.jpg");
+    /* background:linear-gradient(to bottom, rgba(146, 255, 255, 0.36) 5%, rgba(97, 0, 255, 0.15) 100%);
+   background-image: url("../../assets/img/defocused-image-of-lights-255379.jpg"); */
+   background-image: url("../../assets/img/aerial-view-of-seashore-near-large-grey-rocks-853199.jpg");
     margin-top: 0px;
 
 
