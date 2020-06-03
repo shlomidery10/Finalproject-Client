@@ -1,5 +1,7 @@
 body{
     background-color: rgba(146, 255, 255, 0.62);
+    background-image: url("../../assets/img/wp6425628.jpg");
+    background-repeat: no-repeat;
 }
 
 
@@ -268,6 +270,7 @@ h2
 }
 h1{
     font-family: 'Tomatoes-O8L8';
+   
 }
 @font-face {
     font-family:Amsterdam-VwYy;
@@ -312,3 +315,8 @@ h1{
 p{
   font-family: VollkornSemiboldItalic-ywjLV;
 }
+
+img{
+    border-radius: 50px;
+}
+
