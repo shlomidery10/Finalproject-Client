@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class GetLocationService {
 baseUrl:string='http://localhost:3000/'
-
+//193.106.55.112/
 httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
