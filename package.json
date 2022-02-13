@@ -33,7 +33,7 @@
     "@angular/router": "8.0.0",
     "@ng-bootstrap/ng-bootstrap": "^5.0.0",
     "agm-direction": "^0.7.9",
-    "ajv": "6.10.0",
+    "ajv": "6.12.3",
     "angular-calendar": "^0.28.15",
     "angular-ng-autocomplete": "^2.0.1",
     "arrive": "2.4.1",
